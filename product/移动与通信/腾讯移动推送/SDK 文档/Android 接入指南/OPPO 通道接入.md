@@ -131,3 +131,15 @@ I/TPush: [PushServiceBroadcastHandler] >> bind OtherPushToken success ack with [
 ```
 
 >?混淆规则需要放在 App 项目级别的 proguard-rules.pro 文件中。
+
+
+## 常见问题排查
+
+### OPPO 推送注册错误码查询方法
+
+若观察到如下类似日志则说明 OPPO 厂商通道注册失败，开发者可以通过以下方式获取华为推送注册错误码：
+```
+[OtherPushClient] handleUpdateToken other push token is :  other push type: OPPO
+```
+
+推送服务 debug 模式下，过滤关键字“OtherPush”或“HMSSDK” ，查看相关返回码日志(例如`OtherPushOppoImpl] OppoPush Register failed, code=14, msg=INVALID_APP_KEY`)，并前往[厂商通道注册失败排查指南](https://cloud.tencent.com/document/product/548/45659)查找对应原因，获取解决办法。
